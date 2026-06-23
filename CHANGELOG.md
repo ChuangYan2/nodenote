@@ -3,6 +3,12 @@
 All notable changes to **NodeNote** are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.1] — 2026-06-23
+
+### Changed
+- README install instructions now point to the VS Code Marketplace (build-from-source kept as a
+  fallback). No functional changes to the extension.
+
 ## [0.1.0] — 2026-06-23
 
 First public release. A webview custom editor (`nodenote.editor`) for `.md` files.

@@ -9,12 +9,12 @@ the normal text editor to see the source below.
 
 Want the clean derivation plus the practical limit set by the ADC sample rate. Related: [[q2]].
 
-<!-- inbox: type=answer; parent=q1 -->
+<!-- inbox: type=answer; parent=q1; id=a1 -->
 ### bandwidth
 
 Range resolution `Δr = c / (2·B)` — set only by sweep bandwidth `B`, independent of chirp time.
 
-<!-- inbox: type=answer; parent=q1 -->
+<!-- inbox: type=answer; parent=q1; id=a2 -->
 ### ADC limit
 
 In practice capped by the ADC sample rate / max beat frequency.

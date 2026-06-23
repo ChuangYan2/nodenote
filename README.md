@@ -12,15 +12,17 @@ any editor (Obsidian included) and round-trips losslessly.
 
 ## Install
 
+Search **NodeNote** in the Extensions view (`Ctrl/Cmd+Shift+X`) and click **Install** — or from a
+terminal:
+
 ```bash
-npm install
-npm run compile && npm run bundle
-npx @vscode/vsce package --no-dependencies
-code --install-extension nodenote-0.1.0.vsix --force
+code --install-extension Chuang.nodenote
 ```
 
-Then right-click any `.md` → **Open With…** → **NodeNote**. (Or press **F5** in this repo to launch
-an Extension Development Host.)
+Then right-click any `.md` → **Open With…** → **NodeNote**.
+
+> Prefer not to use the Marketplace? Build a `.vsix` from source (see [Build & test](#build--test))
+> and run `code --install-extension nodenote-<version>.vsix`.
 
 ---
 

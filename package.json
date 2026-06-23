@@ -1,12 +1,13 @@
 {
 	"name": "nodenote",
-	"publisher": "chuang",
+	"publisher": "Chuang",
 	"displayName": "NodeNote",
 	"description": "Turn a markdown file into a triage board of question/note cards — status, tabbed answers, pins, links, image paste.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"preview": true,
 	"license": "MIT",
 	"author": "chuang",
+	"icon": "media/icon.png",
 	"keywords": [
 		"markdown",
 		"notebook",

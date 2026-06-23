@@ -4,6 +4,7 @@ out/test/**
 src/**
 docs/**
 examples/**
+scripts/**
 .gitignore
 .git/**
 eslint.config.js
