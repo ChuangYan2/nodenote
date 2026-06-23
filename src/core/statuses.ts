@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------------------
- *  Status taxonomy for the Idea Inbox. Framework-agnostic (no `vscode`): the `icon` strings use
+ *  Status taxonomy for the NodeNote. Framework-agnostic (no `vscode`): the `icon` strings use
  *  VS Code's `$(codicon)` syntax but are inert text elsewhere. Colors match the UI design.
  *  See feature/idea_inbox_spec.md §4.
  *--------------------------------------------------------------------------------------------*/

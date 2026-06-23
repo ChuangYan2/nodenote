@@ -270,10 +270,24 @@ pageEl.addEventListener('keydown',e=>{
   if(e.key==='Enter'&&!e.shiftKey&&e.target.dataset&&(e.target.dataset.head!==undefined||e.target.dataset.ahead!==undefined)){
     e.preventDefault();const body=e.target.closest('.hero,.slide').querySelector('.qbody,.ab');if(body)body.focus();}});
 pageEl.addEventListener('focusout',e=>{save(true);if(editing&&e.target&&(e.target.dataset.cbody!==undefined||e.target.dataset.abody!==undefined)){editing=null;setTimeout(render,0);}});
-// Paste as PLAIN TEXT (strip rich formatting, like VS Code). LaTeX/Unicode math is plain text, so it's kept verbatim.
+function fieldKey(t){ const d=t.dataset||{};
+  if(d.head!==undefined)return 'head:'+d.head; if(d.cbody!==undefined)return 'cbody:'+d.cbody;
+  if(d.ahead!==undefined)return 'ahead:'+d.ahead; if(d.abody!==undefined)return 'abody:'+d.abody; return null; }
+function applyImageToField(key,mdText){ if(!key)return; const p=key.split(':'),kind=p[0];
+  if(kind==='cbody'){const i=+p[1];view[i].cell.body=(view[i].cell.body?view[i].cell.body+'\n':'')+mdText;dirty.add(i);}
+  else if(kind==='abody'){const i=+p[1],a=+p[2];view[i].answers[a].body=(view[i].answers[a].body?view[i].answers[a].body+'\n':'')+mdText;dirty.add(i);}
+  else if(kind==='head'){const i=+p[1];view[i].cell.headingText=(view[i].cell.headingText+' '+mdText).trim();dirty.add(i);}
+  else if(kind==='ahead'){const i=+p[1],a=+p[2];view[i].answers[a].headingText=(view[i].answers[a].headingText+' '+mdText).trim();dirty.add(i);}
+  editing=null; render(); save(true); }
+// Paste: images → saved to assets/ by the extension; everything else → PLAIN TEXT (strip formatting). LaTeX is plain text, kept verbatim.
 pageEl.addEventListener('paste',e=>{ const t=e.target; if(!t||!t.isContentEditable)return;
   const cd=e.clipboardData||window.clipboardData; if(!cd)return;
-  let text=cd.getData('text/plain'); if(text==null)return;
+  const items=cd.items?Array.prototype.slice.call(cd.items):[];
+  const img=items.find(it=>it.kind==='file'&&/^image\//.test(it.type));
+  if(img){ const file=img.getAsFile(); if(file){ e.preventDefault(); const key=fieldKey(t);
+    const rd=new FileReader(); rd.onload=()=>{ const b64=String(rd.result||'').split(',')[1]||''; if(b64)vscode.postMessage({type:'saveImage',mime:file.type,dataBase64:b64,target:key}); };
+    rd.readAsDataURL(file); return; } }
+  let text=cd.getData('text/plain'); if(!text)return; // nothing pastable as text → let default handle it
   if(t.dataset&&(t.dataset.head!==undefined||t.dataset.ahead!==undefined)) text=text.replace(/\s*\n\s*/g,' ').trim(); // titles stay single-line
   e.preventDefault();
   const sel=window.getSelection();
@@ -305,7 +319,8 @@ function openPop(anchor,idx){closePop();const meta=view[idx].cell.meta;
   setTimeout(()=>document.addEventListener('click',outside,true),0);}
 
 window.addEventListener('message',e=>{const m=e.data;
-  if(m.type==='load'){view=m.view||[];if(m.title!==undefined)titleEl.textContent=m.title;if(ui.focus>=view.length)ui.focus=0;render();}});
+  if(m.type==='load'){view=m.view||[];if(m.title!==undefined)titleEl.textContent=m.title;if(m.base!==undefined)base=m.base;if(ui.focus>=view.length)ui.focus=0;render();}
+  else if(m.type==='imageSaved'){applyImageToField(m.target,'![]('+m.path+')');}});
 render();vscode.postMessage({type:'ready'});
 </script>
 </body>

@@ -1,16 +1,32 @@
 {
-	"name": "idea-inbox",
-	"publisher": "waveye",
-	"displayName": "Idea Inbox",
-	"description": "A triage notebook for markdown: per-cell status flags and question/answer cells.",
-	"version": "0.7.2",
+	"name": "nodenote",
+	"publisher": "chuang",
+	"displayName": "NodeNote",
+	"description": "Turn a markdown file into a triage board of question/note cards — status, tabbed answers, pins, links, image paste.",
+	"version": "0.1.0",
 	"preview": true,
+	"license": "MIT",
+	"author": "chuang",
+	"keywords": [
+		"markdown",
+		"notebook",
+		"research",
+		"questions",
+		"triage",
+		"inbox",
+		"custom editor"
+	],
 	"engines": {
 		"vscode": "^1.75.0"
 	},
 	"repository": {
-		"url": "https://github.com/microsoft/vscode-markdown-notebook"
+		"type": "git",
+		"url": "https://github.com/ChuangYan2/nodenote.git"
 	},
+	"bugs": {
+		"url": "https://github.com/ChuangYan2/nodenote/issues"
+	},
+	"homepage": "https://github.com/ChuangYan2/nodenote#readme",
 	"categories": [
 		"Other"
 	],
@@ -25,8 +41,8 @@
 	"contributes": {
 		"customEditors": [
 			{
-				"viewType": "ideaInbox.editor",
-				"displayName": "Idea Inbox",
+				"viewType": "nodenote.editor",
+				"displayName": "NodeNote",
 				"priority": "option",
 				"selector": [
 					{

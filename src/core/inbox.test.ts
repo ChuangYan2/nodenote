@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------------------
- *  Tests for the Idea Inbox core. Run with Node's built-in runner (no vscode, no deps):
+ *  Tests for the NodeNote core. Run with Node's built-in runner (no vscode, no deps):
  *    node --experimental-strip-types --test src/core/inbox.test.ts
  *--------------------------------------------------------------------------------------------*/
 

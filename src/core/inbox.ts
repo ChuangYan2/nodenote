@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------------------------
- *  Idea Inbox core — framework-agnostic parsing/serialization of the inbox markdown format.
+ *  NodeNote core — framework-agnostic parsing/serialization of the inbox markdown format.
  *  No `vscode` dependency: this module is the shared contract both plugins (VS Code, Obsidian)
- *  build on, and is intended to be extracted to `packages/core`. See feature/idea_inbox_spec.md.
+ *  build on, and is intended to be extracted to `packages/core`. See docs/format-spec.md.
  *--------------------------------------------------------------------------------------------*/
 
 export type CellType = 'question' | 'answer' | 'note';

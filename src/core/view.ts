@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------------------
- *  View model for the Idea Inbox webview editor. Groups the flat InboxCell[] into question/note
+ *  View model for the NodeNote webview editor. Groups the flat InboxCell[] into question/note
  *  items each holding their answer cells, and flattens back. Framework-agnostic (no `vscode`).
  *--------------------------------------------------------------------------------------------*/
 
