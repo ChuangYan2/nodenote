@@ -1,13 +1,15 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"target": "es6",
+		"target": "es2020",
 		"outDir": "out",
 		"lib": [
-			"es6"
+			"es2020"
 		],
 		"sourceMap": true,
 		"rootDir": "src",
+		"allowImportingTsExtensions": true,      /* allow `import './x.ts'` (Node strip-types needs the extension) */
+		"rewriteRelativeImportExtensions": true, /* tsc rewrites those .ts specifiers to .js on emit */
 		"strict": true   /* enable all strict type-checking options */
 		/* Additional Checks */
 		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
@@ -16,6 +18,7 @@
 	},
 	"exclude": [
 		"node_modules",
-		".vscode-test"
+		".vscode-test",
+		"src/core/**/*.test.ts"
 	]
 }

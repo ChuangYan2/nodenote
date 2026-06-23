@@ -1,21 +1,18 @@
 {
-	"name": "vscode-markdown-notebook",
-	"publisher": "ms-vscode",
-	"displayName": "Markdown Notebook",
-	"description": "An extension for editing markdown files in VS Code notebooks",
-	"version": "0.0.26",
+	"name": "idea-inbox",
+	"publisher": "waveye",
+	"displayName": "Idea Inbox",
+	"description": "A triage notebook for markdown: per-cell status flags and question/answer cells.",
+	"version": "0.7.2",
 	"preview": true,
 	"engines": {
-		"vscode": "^1.57.0"
+		"vscode": "^1.75.0"
 	},
 	"repository": {
 		"url": "https://github.com/microsoft/vscode-markdown-notebook"
 	},
 	"categories": [
 		"Other"
-	],
-	"activationEvents": [
-		"onNotebook:markdown-notebook"
 	],
 	"main": "./out/extension.js",
 	"browser": "./out/extension-bundle.js",
@@ -26,10 +23,10 @@
 		}
 	},
 	"contributes": {
-		"notebooks": [
+		"customEditors": [
 			{
-				"type": "markdown-notebook",
-				"displayName": "Markdown Notebook",
+				"viewType": "ideaInbox.editor",
+				"displayName": "Idea Inbox",
 				"priority": "option",
 				"selector": [
 					{
@@ -47,12 +44,13 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js",
+		"test:core": "node --experimental-strip-types --test src/core/*.test.ts",
 		"bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension-bundle.js --platform=node --external:vscode"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.10",
 		"@types/node": "^22.0.0",
-		"@types/vscode": "1.57",
+		"@types/vscode": "^1.75.0",
 		"@typescript-eslint/eslint-plugin": "^8.58.0",
 		"@typescript-eslint/parser": "^8.58.0",
 		"@vscode/test-electron": "^2.5.2",
